@@ -7,16 +7,25 @@ import (
 )
 
 func SetFlag(bytes []byte) {
+	if(len(bytes) < 1) {
+		return
+	}
 	bytes[len(bytes)-1] |= uint8(0x1 << 6)
 }
 
 func ClearFlag(ret []byte, bytes []byte) {
 	copy(ret, bytes)
+	if(len(ret) < 1) {
+		return
+	}
 	ret[len(ret)-1] &= ^uint8(0x1 << 6)
 	return
 }
 
 func IsFlagSet(bytes []byte) bool {
+	if (len(bytes) < 1) {
+		return false;
+	}
 	flag := bytes[len(bytes)-1] & (0x1 << 6)
 	if flag != 0 {
 		return true

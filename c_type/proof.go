@@ -17,6 +17,9 @@ func (b Proof) MarshalText() ([]byte, error) {
 }
 
 func (b *Proof) UnmarshalText(input []byte) error {
+	if len(input) < 2 {
+		return fmt.Errorf("hex string length must > 2 : current is %v", len(input))
+	}
 	raw := input[2:]
 	if len(raw) == 0 {
 		return nil
