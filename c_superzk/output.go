@@ -21,7 +21,7 @@ func ProveOutput(
 ) (proof c_type.Proof, e error) {
 	ret := C.int(0)
 	if isEx {
-		ret = C.superzk_prove_output_v1(
+		ret = C.superzk_prove_output_v2(
 			(*C.uchar)(unsafe.Pointer(&asset.Tkn_currency[0])),
 			(*C.uchar)(unsafe.Pointer(&asset.Tkn_value[0])),
 			(*C.uchar)(unsafe.Pointer(&asset.Tkt_category[0])),
@@ -31,7 +31,7 @@ func ProveOutput(
 			(*C.uchar)(unsafe.Pointer(&proof[0])),
 		)
 	} else {
-		ret = C.superzk_prove_output_v0(
+		ret = C.superzk_prove_output_v1(
 			(*C.uchar)(unsafe.Pointer(&asset.Tkn_currency[0])),
 			(*C.uchar)(unsafe.Pointer(&asset.Tkn_value[0])),
 			(*C.uchar)(unsafe.Pointer(&asset.Tkt_category[0])),
@@ -50,12 +50,12 @@ func ProveOutput(
 func VerifyOutput(asset_cm *c_type.Uint256, proof *c_type.Proof, isEx bool) (e error) {
 	ret := C.int(0)
 	if isEx {
-		ret = C.superzk_verify_output_v1(
+		ret = C.superzk_verify_output_v2(
 			(*C.uchar)(unsafe.Pointer(&asset_cm[0])),
 			(*C.uchar)(unsafe.Pointer(&proof[0])),
 		)
 	} else {
-		ret = C.superzk_verify_output_v0(
+		ret = C.superzk_verify_output_v1(
 			(*C.uchar)(unsafe.Pointer(&asset_cm[0])),
 			(*C.uchar)(unsafe.Pointer(&proof[0])),
 		)
