@@ -58,7 +58,7 @@ func SIP5() uint64 {
 
 func SIP6() uint64 {
 	if is_dev {
-		return 50
+		return 0
 	} else {
 		return uint64(2123558)
 	}
@@ -66,9 +66,9 @@ func SIP6() uint64 {
 
 func SIP7() uint64 {
 	if is_dev {
-		return 0
+		return 20
 	} else {
-		return uint64(2680000)
+		return uint64(2764851)
 	}
 }
 
