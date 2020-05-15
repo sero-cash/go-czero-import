@@ -76,7 +76,7 @@ func SIP8() uint64 {
 	if is_dev {
 		return 50
 	} else {
-		return uint64(3205679)
+		return uint64(3315000)
 	}
 }
 
