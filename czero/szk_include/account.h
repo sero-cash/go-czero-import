@@ -120,5 +120,13 @@ extern int superzk_nil2cm(
     unsigned char root_cm[32]
 );
 
+extern int superzk_pkr_crypte(
+    const unsigned char data[32],
+    const unsigned char myPKr[SZK_PKr_WIDTH],
+    const unsigned char myTk[SZK_TK_WIDTH],
+    const unsigned char youPKr[SZK_PKr_WIDTH],
+    unsigned char dataEnc[32]
+);
+
 
 #endif //LIBSUPERZK_ACCOUNT_H
