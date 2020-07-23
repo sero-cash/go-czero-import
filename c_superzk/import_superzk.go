@@ -1,5 +1,7 @@
 package c_superzk
 
+import _ "github.com/sero-cash/go-czero-import/czero"
+
 /*
 
 #cgo CFLAGS: -I ../czero/szk_include
