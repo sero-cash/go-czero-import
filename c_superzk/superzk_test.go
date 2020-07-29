@@ -277,3 +277,24 @@ func TestCombine(t *testing.T) {
 		t.Fatal()
 	}
 }
+
+func TestPKrCrypte(t *testing.T) {
+	seed0 := c_type.RandUint256()
+	sk0 := Seed2Sk(&seed0)
+	tk0, _ := Sk2Tk(&sk0)
+	pk0, _ := Tk2Pk(&tk0)
+	pkr0, _ := Pk2PKr(&pk0, c_type.RandUint256().NewRef())
+
+	seed1 := c_type.RandUint256()
+	sk1 := Seed2Sk(&seed1)
+	tk1, _ := Sk2Tk(&sk1)
+	pk1, _ := Tk2Pk(&tk1)
+	pkr1, _ := Pk2PKr(&pk1, c_type.RandUint256().NewRef())
+
+	data := c_type.RandUint256()
+	dataEnc, _ := PkrCrypte(&data, &pkr0, &tk0, &pkr1)
+	dataDec, _ := PkrCrypte(&dataEnc, &pkr1, &tk1, &pkr0)
+	if dataDec != data {
+		t.FailNow()
+	}
+}

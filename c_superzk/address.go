@@ -118,3 +118,33 @@ func FetchRootCM(tk *c_type.Tk, nl *c_type.Uint256, baser *c_type.Uint256) (root
 	}
 	return
 }
+
+func PkrCrypte(data *c_type.Uint256, myPKr *c_type.PKr, myTk *c_type.Tk, youPKr *c_type.PKr) (dataEnc c_type.Uint256, e error) {
+	if !IsSzkPKr(myPKr) {
+		e = errors.New("csuperzk pkr crypte error: myPKr is not szk")
+		return
+	}
+	if !IsSzkTk(myTk) {
+		e = errors.New("csuperzk pkr crypte error: myTk is not szk")
+		return
+	}
+	if !IsSzkPKr(youPKr) {
+		e = errors.New("csuperzk pkr crypte error: youPKr is not szk")
+		return
+	}
+	myPKr = ClearPKr(myPKr)
+	myTk = ClearTk(myTk)
+	youPKr = ClearPKr(youPKr)
+	ret := C.superzk_pkr_crypte(
+		(*C.uchar)(unsafe.Pointer(&data[0])),
+		(*C.uchar)(unsafe.Pointer(&myPKr[0])),
+		(*C.uchar)(unsafe.Pointer(&myTk[0])),
+		(*C.uchar)(unsafe.Pointer(&youPKr[0])),
+		(*C.uchar)(unsafe.Pointer(&dataEnc[0])),
+	)
+	if ret != C.int(0) {
+		e = fmt.Errorf("csuperzk pkr crypte error: %d", int(ret))
+		return
+	}
+	return
+}
