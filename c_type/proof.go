@@ -4,7 +4,6 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/sero-cash/go-sero/crypto/sha3"
 )
 
 type Proof [PROOF_WIDTH]byte
@@ -36,9 +35,9 @@ func (b *Proof) UnmarshalText(input []byte) error {
 	return nil
 }
 
-func (self *Proof) ToHash() (ret Uint256) {
-	d := sha3.NewKeccak256()
-	d.Write(self[:])
-	copy(ret[:], d.Sum(nil))
-	return
-}
+// func (self *Proof) ToHash() (ret Uint256) {
+// 	d := sha3.NewKeccak256()
+// 	d.Write(self[:])
+// 	copy(ret[:], d.Sum(nil))
+// 	return
+// }
