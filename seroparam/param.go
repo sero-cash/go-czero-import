@@ -1,8 +1,10 @@
 package seroparam
 
+const SIP_DEV_OLD uint64=5
+
 func SIP1() uint64 {
 	if is_dev {
-		return 0
+		return SIP_DEV_OLD
 	} else {
 		return uint64(130000) //for miner rewards
 	}
@@ -10,7 +12,7 @@ func SIP1() uint64 {
 
 func SIP2() uint64 {
 	if is_dev {
-		return 0
+		return SIP_DEV_OLD
 	} else {
 		return uint64(606006)
 	}
@@ -26,7 +28,7 @@ func SIP3() uint64 {
 
 func VP1() uint64 {
 	if is_dev {
-		return 0
+		return SIP_DEV_OLD
 	} else {
 		return uint64(829000)
 	}
@@ -34,7 +36,7 @@ func VP1() uint64 {
 
 func VP0() uint64 {
 	if is_dev {
-		return 0
+		return SIP_DEV_OLD
 	} else {
 		return uint64(788888)
 	}
@@ -42,7 +44,7 @@ func VP0() uint64 {
 
 func SIP4() uint64 {
 	if is_dev {
-		return 0
+		return SIP_DEV_OLD
 	} else {
 		return uint64(1300000)
 	}
@@ -58,7 +60,7 @@ func SIP5() uint64 {
 
 func SIP6() uint64 {
 	if is_dev {
-		return 0
+		return SIP_DEV_OLD
 	} else {
 		return uint64(2123558)
 	}
@@ -66,7 +68,7 @@ func SIP6() uint64 {
 
 func SIP7() uint64 {
 	if is_dev {
-		return 20
+		return SIP_DEV_OLD
 	} else {
 		return uint64(2764851)
 	}
@@ -74,7 +76,7 @@ func SIP7() uint64 {
 
 func SIP8() uint64 {
 	if is_dev {
-		return 50
+		return SIP_DEV_OLD
 	} else {
 		return uint64(3315000)
 	}
@@ -82,9 +84,17 @@ func SIP8() uint64 {
 
 func SIP9() uint64 {
 	if is_dev {
-		return 50
+		return SIP_DEV_OLD
 	} else {
 		return uint64(4339090)
+	}
+}
+
+func SIP10() uint64 {
+	if is_dev {
+		return SIP_DEV_OLD
+	} else {
+		return 5703394
 	}
 }
 
